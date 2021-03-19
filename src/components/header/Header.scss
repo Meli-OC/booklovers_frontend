@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './src/utilities/variables';
+
+.header{
+   height: 150px;
+   background-color: $headerColor;
+   @apply flex flex-row items-center w-screen;
+   .logo, .links{
+      @apply w-1/2 overflow-hidden;
+   }
+   .logo {
+      @apply flex flex-row justify-start items-center font-bold;
+      h1{
+         font-size: 2.5rem;
+         margin-left: 50px;
+      }
+      img{
+         height: 80px;
+         width: 150px;
+         margin-left: 50px;
+      }
+   }
+   .links{
+      font-size: 1.3rem;
+      @apply flex;
+      ul{
+         @apply flex w-full justify-end;
+         .books, .connection{
+            margin-right: 50px;
+         }
+         .sign-up{
+            margin-right: 80px;
+         }
+      }
+   }
+}

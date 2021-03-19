@@ -1,13 +1,28 @@
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-          Wiseaty
-        </h1>
-      </header>
-    </div>
-  )
+import {React, useState} from "react";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import Login from "./features/users/components/login";
+import SignUp from "./features/users/components/signUp";
+import Header from "./components/header";
+import Home from "./components/home";
+import "./App.scss";
+
+const App= (props) => {
+
+    const[homepage, setHomepage] = useState(true);
+
+    return (
+        <Router>
+            <div className="App">
+                <Header />
+                <Switch>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/signup" component={SignUp}/>
+                    <Redirect to="home"/>
+                </Switch>
+                <Home />
+            </div>
+        </Router>
+    )
 }
 
 export default App

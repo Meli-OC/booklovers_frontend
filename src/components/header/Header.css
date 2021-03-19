@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.header {
+  height: 100px;
+  @apply flex flex-row items-center w-screen;
+}
+.header .logo, .header .links {
+  @apply w-1/2 overflow-hidden;
+}
+.header .logo {
+  @apply flex flex-row justify-start;
+}
+.header .logo h1 {
+  @apply text-2xl ml-16;
+}
+
+/*# sourceMappingURL=Header.css.map */

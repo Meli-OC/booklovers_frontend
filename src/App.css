@@ -1,0 +1,16 @@
+@import 'tailwind/base';
+@import 'tailwind/components';
+@import 'tailwind/utilities';
+
+
+header {
+  background-color: #FEB57A;
+}
+
+#root {
+  @apply h-screen;
+  background-color: #FFF0E4;
+  font-family: "Raleway", sans-serif;
+}
+
+/*# sourceMappingURL=App.css.map */
