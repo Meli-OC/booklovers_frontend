@@ -1,28 +1,26 @@
-import {React, useState} from "react";
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
-import Login from "./features/users/components/login";
-import SignUp from "./features/users/components/signUp";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./containers/users/components/login";
+import SignUp from "./containers/users/components/signUp";
 import Header from "./components/header";
-import Home from "./components/home";
-import "./App.scss";
+import Home from "./containers/home";
+import Footer from "./components/footer/Footer";
+import "./assets/css/App.scss";
 
-const App= (props) => {
+const App = (props) => {
+	return (
+		<Router>
+			<div className="App">
+				<Header />
+				<Switch>
+					<Route path="/login" component={Login} />
+					<Route path="/signup" component={SignUp} />
+					<Route component={Home} />
+				</Switch>
+				<Footer />
+			</div>
+		</Router>
+	);
+};
 
-    const[homepage, setHomepage] = useState(true);
-
-    return (
-        <Router>
-            <div className="App">
-                <Header />
-                <Switch>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/signup" component={SignUp}/>
-                    <Redirect to="home"/>
-                </Switch>
-                <Home />
-            </div>
-        </Router>
-    )
-}
-
-export default App
+export default App;

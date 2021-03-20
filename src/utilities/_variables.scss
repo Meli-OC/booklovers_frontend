@@ -1,6 +1,39 @@
-$primaryColor: #FFF0E4;
-$headerColor: #FEB57A;
-$fontColor : #535353;
+$primaryColor: #fff0e4;
+$headerColor: #feb57a;
+$fontHeaderColor: #a9a0ab;
+$fontColor: #535353;
 
+$blackPurpleColor: #22151e;
+$mediumPurpleColor: #39122a;
+$lightPurpleColor: #fffbfd;
+$lighterPurpleColor: #623751;
 
-$fontFamily: "Raleway" , sans-serif;
+$fontFamily: "Raleway", sans-serif;
+
+$gradients: () !default;
+$gradients: map-merge(
+	(
+		chill: linear-gradient(135deg, #09e485 0%, #0291e3 100%),
+		warm: linear-gradient(135deg, #f2cd48 0%, #fd803f 100%),
+		hot: linear-gradient(135deg, #f9445a 0%, #fd803f 100%),
+		cold: linear-gradient(135deg, #8019c6 0%, #2f93cc 100%),
+		purple:
+			linear-gradient(
+				135deg,
+				$blackPurpleColor 0%,
+				$mediumPurpleColor 30%,
+				$lighterPurpleColor 100%
+			),
+	),
+	$gradients
+);
+
+@mixin bg-gradient($parent, $gradient) {
+	#{$parent} {
+		background: $gradient;
+	}
+}
+
+@each $gradient, $value in $gradients {
+	@include bg-gradient(".bg-gradient-#{$gradient}", $value);
+}
