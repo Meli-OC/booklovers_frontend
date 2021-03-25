@@ -1,10 +1,11 @@
 import React from "react";
+import "./Home.scss";
 
 const Home = () => {
 	return (
-		<div className="container">
+		<div className="homepage-container">
 			<div className="homepage">
-				<h1>Bienvenue sur le site dédié aux amoureux des livres!</h1>
+				<h2>Bienvenue sur le site dédié aux amoureux des livres!</h2>
 			</div>
 			<div className="search">
 				<form action="POST">
@@ -13,6 +14,7 @@ const Home = () => {
 						type="text"
 						name="search"
 						id="search"
+						className="search-input"
 						placeholder="Recherche"
 					/>
 					<button type="submit" className="btn-submit">

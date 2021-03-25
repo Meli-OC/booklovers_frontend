@@ -5,6 +5,15 @@
 
 .App {
 	@apply flex flex-col;
+	@media (min-width: 1536px) {
+		.container {
+			max-width: 100vw;
+		}
+	}
+
+	.container {
+		width: 100%;
+	}
 }
 
 #root {

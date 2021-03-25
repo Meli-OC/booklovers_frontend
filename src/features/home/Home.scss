@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./src/utilities/variables";
+
+.homepage-container {
+	@apply flex  flex-col items-center h-screen;
+	.homepage {
+		@apply flex justify-center w-screen;
+		margin: 100px auto;
+		h2 {
+			font-size: 3.3rem;
+		}
+	}
+
+	.search-input {
+		width: 500px;
+		height: 40px;
+		margin-right: 50px;
+		border: 1px solid $mediumPurpleColor;
+		border-radius: 15px;
+		box-shadow: 10px 5px 5px $mediumPurpleColor;
+	}
+}
