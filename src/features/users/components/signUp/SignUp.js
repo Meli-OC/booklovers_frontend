@@ -14,22 +14,17 @@ const SignUp = ({
 	handlePasswordChange,
 }) => {
 	const history = useHistory();
-	const [password2, setPassword2] = useState("");
 	const [username, setUsername] = useState("");
 
 	const handleCreateUser = async (event) => {
 		try {
 			event.preventDefault();
-			const resp = await axios.post(
-				"http://localhost:8888/authentication/register/",
-				{
-					headers: { "Content-Type": "application/json" },
-					username: username,
-					email: email,
-					password1: password,
-					password2: password2,
-				}
-			);
+			const resp = await axios.post("http://localhost:8888/api/auth/register", {
+				headers: { "Content-Type": "application/json" },
+				email: email,
+				username: username,
+				password: password,
+			});
 			console.log(resp.data);
 			if (resp.data.key) {
 				setUser(resp.data.key);
@@ -87,19 +82,6 @@ const SignUp = ({
 							placeholder="Password 1"
 							value={password}
 							onChange={handlePasswordChange}
-						/>
-						<label htmlFor="password" className="password">
-							Confirmer le mot de passe:
-						</label>
-						<input
-							className="password-input"
-							type="password"
-							name="password2"
-							placeholder="Password 2"
-							value={password2}
-							onChange={(event) => {
-								setPassword2(event.target.value);
-							}}
 						/>
 						<button type="submit" value="Submit">
 							Créer

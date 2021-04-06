@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import Login from "./features/users/components/login/Login";
 import SignUp from "./features/users/components/signUp/SignUp";
 import Header from "./components/header/Header";
-import Home from "./conf/home/Home";
+import Home from "./features/home/Home";
 import Footer from "./components/footer/Footer";
 import "./assets/css/App.scss";
 import Account from "./features/users/components/account/Account";
