@@ -20,20 +20,20 @@ const SignUp = ({
 		try {
 			event.preventDefault();
 			const resp = await axios.post("http://localhost:8888/api/auth/register", {
-				headers: { "Content-Type": "application/json" },
 				email: email,
 				username: username,
 				password: password,
 			});
 			console.log(resp.data);
-			if (resp.data.key) {
-				setUser(resp.data.key);
+			if (resp.data.token) {
+				setUser(resp.data.token);
 				setEmail("");
+				setUsername("")
 				setPassword("");
 				history.push("/");
 			}
 		} catch (e) {
-			alert(e.response.data);
+			console.error(e.response.data);
 		}
 	};
 
@@ -48,6 +48,17 @@ const SignUp = ({
 				<div className="signU-info">
 					<h3>Créer un compte</h3>
 					<div className="form-SignUp">
+						<label htmlFor="email" className="email">
+							Email:
+						</label>
+						<input
+							className="email-input"
+							type="email"
+							name="email"
+							placeholder="Email"
+							value={email}
+							onChange={handleEmailChange}
+						/>
 						<label htmlFor="username" className="username">
 							Username:
 						</label>
@@ -61,25 +72,14 @@ const SignUp = ({
 								setUsername(event.target.value);
 							}}
 						/>
-						<label htmlFor="email" className="email">
-							Email:
-						</label>
-						<input
-							className="email-input"
-							type="email"
-							name="email"
-							placeholder="Email"
-							value={email}
-							onChange={handleEmailChange}
-						/>
 						<label htmlFor="password" className="password">
 							Mot de passe:
 						</label>
 						<input
 							className="password-input"
 							type="password"
-							name="password1"
-							placeholder="Password 1"
+							name="password"
+							placeholder="Password"
 							value={password}
 							onChange={handlePasswordChange}
 						/>

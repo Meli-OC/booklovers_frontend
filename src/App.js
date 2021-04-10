@@ -27,20 +27,20 @@ const App = () => {
 		setPassword(value);
 	};
 
-	const setUser = (key) => {
-		if (key) {
-			Cookies.set("userToken", key, { expires: 7 });
+	const setUser = (token) => {
+		if (token) {
+			Cookies.set("userToken", token, { expires: 7 });
 			setIsLogged(true);
-			const response = axios.get(
-				"http://localhost:8888/authentication/users/",
-				{
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${key}`,
-					},
-				}
-			);
-			console.log(response.data);
+			// const response = axios.get(
+			// 	"http://localhost:8888/authentication/users/",
+			// 	{
+			// 		headers: {
+			// 			"Content-Type": "application/json",
+			// 			Authorization: `Bearer ${key}`,
+			// 		},
+			// 	}
+			// );
+			// console.log(response.data);
 			// // setUserInfo(response.data);
 		} else {
 			Cookies.remove("userToken");
@@ -61,8 +61,10 @@ const App = () => {
 					<Route path="/login">
 						<Login
 							email={email}
+							setEmail={setEmail}
 							handleEmailChange={handleEmailChange}
 							password={password}
+							setPassword={setPassword}
 							handlePasswordChange={handlePasswordChange}
 							setUser={setUser}
 						/>

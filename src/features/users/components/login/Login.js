@@ -6,7 +6,9 @@ import "./Login.scss";
 
 const Login = ({
 	email,
+	setEmail,
 	password,
+	setPassword,
 	setUser,
 	handleEmailChange,
 	handlePasswordChange,
@@ -20,20 +22,21 @@ const Login = ({
 		try {
 			event.preventDefault();
 			// axios request to log to our account
-			const resp = await axiosInstance.post("login/", {
+			const resp = await axios.post("http://localhost:8888/api/auth/login", {
 				email: email,
 				password: password,
 			});
-			if (resp.data.key) {
-				setUser(resp.data.key);
+			if (resp.data.token) {
+				setUser(resp.data.token);
 				// when logged we return to th homepage
+				setEmail("")
+				setPassword("")
 				history.push("/");
 			} else {
 				alert("Une erreur est survenue");
 			}
 		} catch (e) {
-			console.error(e.resp.data);
-			throw e;
+			console.error(e.response.data);
 		}
 	};
 
