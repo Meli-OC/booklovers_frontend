@@ -5,21 +5,39 @@
 @import "./src/utilities/variables";
 
 .homepage-container {
-	@apply flex  flex-col items-center h-screen;
+	@include input-placeholder;
+	@include button;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
 	.homepage {
-		@apply flex justify-center w-screen;
+		display: flex;
+		justify-content: center;
+		width: 100vw;
 		margin: 100px auto;
 		h2 {
 			font-size: 3.3rem;
 		}
 	}
-
 	.search-input {
-		width: 500px;
-		height: 40px;
-		margin-right: 50px;
-		border: 1px solid $mediumPurpleColor;
+		width: 600px;
+		height: 50px;
+		margin-right: 20px;
+		background-color: $lighterPurpleColor;
+		border: 1px solid transparent;
 		border-radius: 15px;
-		box-shadow: 10px 5px 5px $mediumPurpleColor;
 	}
+/*	.btn-submit{
+		height: 50px;
+		width: 150px;
+		color: $lightPurpleColor;
+		background-color: $mediumPurpleColor;
+		border: 1px solid transparent;
+		border-radius: 15px;
+		&:hover{
+			background-color: $buttonHoverColor;
+		}
+	}*/
+
 }
