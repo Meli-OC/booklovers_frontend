@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "./../../../../conf/api.users";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const SignUp = ({
 	const handleCreateUser = async (event) => {
 		try {
 			event.preventDefault();
-			const resp = await axios.post("http://localhost:8888/api/auth/register", {
+			const resp = await axiosInstance.post("register", {
 				email: email,
 				username: username,
 				password: password,

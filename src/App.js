@@ -8,7 +8,9 @@ import Home from "./features/home/Home";
 import Footer from "./components/footer/Footer";
 import "./assets/css/App.scss";
 import Account from "./features/users/components/account/Account";
-import axios from "axios";
+// import axiosInstance from "./conf/api.users";
+import axios from 'axios';
+
 
 const App = () => {
 	const [userToken, setUserToken] = useState();
@@ -31,17 +33,7 @@ const App = () => {
 		if (token) {
 			Cookies.set("userToken", token, { expires: 7 });
 			setIsLogged(true);
-			// const response = axios.get(
-			// 	"http://localhost:8888/authentication/users/",
-			// 	{
-			// 		headers: {
-			// 			"Content-Type": "application/json",
-			// 			Authorization: `Bearer ${key}`,
-			// 		},
-			// 	}
-			// );
-			// console.log(response.data);
-			// // setUserInfo(response.data);
+			setUserToken(token)
 		} else {
 			Cookies.remove("userToken");
 			setUserToken(null);
@@ -49,13 +41,34 @@ const App = () => {
 		}
 	};
 
+	const getUserInfo = () => {
+		if (isLogged){
+			axios.get(
+				"http://localhost:8888/api/auth/user",
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Token ${userToken}`,
+					},
+				},
+			)
+				.then(resp =>setUserInfo(resp.data))
+			console.log(userInfo)
+			;
+		}
+	}
+
+	useEffect(() => {
+		getUserInfo();
+	})
+
 	return (
 		<Router>
 			<div className="App">
 				<Header
 					isLogged={isLogged}
 					setIsLogged={setIsLogged}
-					// user={userInfo.username}
+					username={userInfo.username}
 				/>
 				<Switch>
 					<Route path="/login">

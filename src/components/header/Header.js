@@ -6,7 +6,7 @@ import logo from "./bookLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ isLogged, setIsLogged, user }) => {
+const Header = ({ isLogged, setIsLogged, username }) => {
 	const history = useHistory();
 
 	const handleLogout = () => {
@@ -26,9 +26,7 @@ const Header = ({ isLogged, setIsLogged, user }) => {
 				</div>
 				{isLogged ? (
 					<div className="links">
-						{/* <div>
-							<h2>{user}</h2>
-						</div> */}
+						<h2>Bonjour, {username}</h2>
 						<ul>
 							<li>
 								<NavLink className="books" to="/">

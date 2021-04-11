@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axiosInstance from "./../../../../conf/api.users";
-import axios from "axios";
 import "./Login.scss";
 
 const Login = ({
@@ -22,7 +21,7 @@ const Login = ({
 		try {
 			event.preventDefault();
 			// axios request to log to our account
-			const resp = await axios.post("http://localhost:8888/api/auth/login", {
+			const resp = await axiosInstance.post("login", {
 				email: email,
 				password: password,
 			});
@@ -36,7 +35,7 @@ const Login = ({
 				alert("Une erreur est survenue");
 			}
 		} catch (e) {
-			console.error(e.response.data);
+			console.error(e.response);
 		}
 	};
 
