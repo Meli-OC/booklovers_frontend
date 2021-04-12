@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-gradient-chill {
+  background: linear-gradient(135deg, #09e485 0%, #0291e3 100%);
+}
+
+.bg-gradient-warm {
+  background: linear-gradient(135deg, #f2cd48 0%, #fd803f 100%);
+}
+
+.bg-gradient-hot {
+  background: linear-gradient(135deg, #f9445a 0%, #fd803f 100%);
+}
+
+.bg-gradient-cold {
+  background: linear-gradient(135deg, #8019c6 0%, #2f93cc 100%);
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #22151e 0%, #39122a 30%, #623751 100%);
+}
+
+/*# sourceMappingURL=Login.css.map */
