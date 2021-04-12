@@ -38,16 +38,3 @@ $gradients: map-merge(
 @each $gradient, $value in $gradients {
 	@include bg-gradient(".bg-gradient-#{$gradient}", $value);
 }
-
-
-@mixin button-design{
-	button{
-		width: 150px;
-		height: 50px;
-		background-color: $mediumPurpleColor;
-		color: $lighterPurpleColor;
-		&:hover{
-			background-color: $buttonHoverColor;
-		}
-	}
-}
