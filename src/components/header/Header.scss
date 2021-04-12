@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./src/utilities/variables";
+@import "../../utilities/_variables";
 
 .header {
 	height: 150px;
