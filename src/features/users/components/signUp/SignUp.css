@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
+@tailwind base;
 .bg-gradient-chill {
   background: linear-gradient(135deg, #09e485 0%, #0291e3 100%);
 }
@@ -21,46 +21,46 @@
   background: linear-gradient(135deg, #22151e 0%, #39122a 30%, #623751 100%);
 }
 
-.login-container {
-  height: 84%;
+.signUp-container {
+  height: 84vh;
 }
-.login-container .login-info {
+.signUp-container .signUp-info {
   height: 600px;
   width: 900px;
   background-color: #623751;
   border-radius: 15px;
 }
-.login-container .login-info h3 {
+.signUp-container .signUp-info h3 {
   color: #fffbfd;
   font-size: 1.8rem;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
-.login-container .login-info .formInfo label {
+.signUp-container .signUp-info .form-signUp label {
   color: #fffbfd;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
-.login-container .login-info .formInfo input {
+.signUp-container .signUp-info .form-signUp input {
   width: 500px;
   height: 40px;
   padding-left: 20px;
   margin-bottom: 20px;
   border-radius: 15px;
 }
-.login-container .login-info .formInfo button {
-  margin-top: 50px;
+.signUp-container .signUp-info .form-signUp button {
+  margin-top: 20px;
   width: 250px;
   height: 50px;
   background-color: #39122a;
   color: #fffbfd;
   border-radius: 15px;
 }
-.login-container .login-info .formInfo button:hover {
+.signUp-container .signUp-info .form-signUp button:hover {
   background-color: #ad1e74;
 }
-.login-container .password {
-  margin-top: 40px;
+.signUp-container .email, .signUp-container .username, .signUp-container .password {
+  margin-top: 15px;
   margin-bottom: 0;
 }
 
-/*# sourceMappingURL=Login.css.map */
+/*# sourceMappingURL=SignUp.css.map */

@@ -49,8 +49,7 @@ const App = () => {
 					},
 				},
 			)
-				.then(resp =>setUserInfo(resp.data))
-			;
+				.then(resp =>setUserInfo(resp.data));
 		}
 	}
 
@@ -64,6 +63,7 @@ const App = () => {
 				<Header
 					isLogged={isLogged}
 					setIsLogged={setIsLogged}
+					setUserToken={setUserToken}
 					username={userInfo.username}
 				/>
 				<Switch>
@@ -89,7 +89,9 @@ const App = () => {
 							setUser={setUser}
 						/>
 					</Route>
-					<Route path="/account" component={Account} />
+					<Route path="/account">
+						<Account username={userInfo.username} emailInfo={userInfo.email}/>
+					</Route>
 					<Route component={Home} />
 				</Switch>
 				<Footer />

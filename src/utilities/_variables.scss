@@ -38,3 +38,55 @@ $gradients: map-merge(
 @each $gradient, $value in $gradients {
 	@include bg-gradient(".bg-gradient-#{$gradient}", $value);
 }
+
+@mixin container {
+	@apply flex flex-col justify-center items-center placeholder-gray-800;
+}
+
+@mixin labelMargin($top, $bottom){
+	margin-top: $top;
+	margin-bottom: $bottom;
+}
+
+@mixin button($marginTop, $width, $height){
+	margin-top: $marginTop;
+	width: $width;
+	height: $height;
+	background-color: $mediumPurpleColor;
+	color: $lightPurpleColor;
+	border-radius: 15px;
+	&:hover{
+		background-color: $buttonHoverColor;
+	}
+}
+
+@mixin form-design($classInfo, $formName, $marginBottom, $buttonTop, $buttonWidth, $buttonHeight){
+	#{$classInfo}{
+		height: 600px;
+		width: 900px;
+		background-color: $lighterPurpleColor;
+		border-radius: 15px;
+		h3{
+			color: $lightPurpleColor;
+			font-size: 1.8rem;
+			margin-bottom: $marginBottom;
+		}
+		#{$formName}{
+			label{
+				color: $lightPurpleColor;
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+			}
+			input{
+				width: 500px;
+				height: 40px;
+				padding-left: 20px;
+				margin-bottom: 20px;
+				border-radius: 15px;
+			}
+			button{
+				@include button($buttonTop, $buttonWidth, $buttonHeight);
+			}
+		}
+	}
+}

@@ -22,7 +22,7 @@
 }
 
 .App {
-  @apply flex flex-col;
+  @apply flex flex-col h-screen;
 }
 @media (min-width: 1536px) {
   .App .container {
@@ -31,6 +31,10 @@
 }
 .App .container {
   width: 100%;
+}
+
+.signUp-container, .signUp-info, .form-signUp, .login-container, .login-info, .formInfo {
+  @apply flex flex-col justify-center items-center placeholder-gray-800;
 }
 
 #root {

@@ -24,7 +24,6 @@ const SignUp = ({
 				username: username,
 				password: password,
 			});
-			console.log(resp.data);
 			if (resp.data.token) {
 				setUser(resp.data.token);
 				setEmail("");
@@ -45,9 +44,9 @@ const SignUp = ({
 				className="signUp-form"
 				onSubmit={handleCreateUser}
 			>
-				<div className="signU-info">
+				<div className="signUp-info">
 					<h3>Créer un compte</h3>
-					<div className="form-SignUp">
+					<div className="form-signUp">
 						<label htmlFor="email" className="email">
 							Email:
 						</label>
