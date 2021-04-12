@@ -1,17 +1,55 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 5 | @import "./src/utilities/variables";
- *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   Home.scss 5:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 5 \2502  @import \"./src/utilities/variables\";\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   Home.scss 5:9  root stylesheet";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-gradient-chill {
+  background: linear-gradient(135deg, #09e485 0%, #0291e3 100%);
 }
+
+.bg-gradient-warm {
+  background: linear-gradient(135deg, #f2cd48 0%, #fd803f 100%);
+}
+
+.bg-gradient-hot {
+  background: linear-gradient(135deg, #f9445a 0%, #fd803f 100%);
+}
+
+.bg-gradient-cold {
+  background: linear-gradient(135deg, #8019c6 0%, #2f93cc 100%);
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #22151e 0%, #39122a 30%, #623751 100%);
+}
+
+.homepage-container {
+  @apply flex  flex-col items-center;
+  height: 84vh;
+}
+.homepage-container .homepage {
+  @apply flex justify-center w-screen;
+  margin: 100px auto;
+}
+.homepage-container .homepage h2 {
+  font-size: 3.3rem;
+}
+.homepage-container .search-input {
+  width: 700px;
+  height: 50px;
+  padding-left: 20px;
+  margin-right: 50px;
+  background-color: #623751;
+  border: 1px solid #623751;
+  border-radius: 15px;
+}
+.homepage-container .btn-submit {
+  width: 150px;
+  height: 50px;
+  background-color: #39122a;
+  color: #fffbfd;
+  border-radius: 15px;
+}
+.homepage-container .btn-submit:hover {
+  background-color: #ad1e74;
+}
+
+/*# sourceMappingURL=Home.css.map */
