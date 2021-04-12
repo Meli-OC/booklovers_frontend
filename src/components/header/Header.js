@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import Cookies from "js-cookie";
 import "./Header.scss";
 import logo from "./bookLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ isLogged, setIsLogged, username }) => {
+const Header = ({ isLogged, setIsLogged, setUserToken, username }) => {
 	const history = useHistory();
 
 	const handleLogout = () => {
-		Cookies.remove("userToken");
+		setUserToken("")
 		setIsLogged(false);
 		history.push("/");
 	};

@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./src/utilities/variables";
+@import "../../utilities/_variables";
 
 .homepage-container {
-	@apply flex  flex-col items-center h-screen;
+	@apply flex  flex-col items-center;
+	height: 84vh;
 	.homepage {
 		@apply flex justify-center w-screen;
 		margin: 100px auto;
@@ -13,13 +14,24 @@
 			font-size: 3.3rem;
 		}
 	}
-
 	.search-input {
-		width: 500px;
-		height: 40px;
+		width: 700px;
+		height: 50px;
+		padding-left: 20px;
 		margin-right: 50px;
-		border: 1px solid $mediumPurpleColor;
+		background-color: $lighterPurpleColor;
+		border: 1px solid $lighterPurpleColor;
 		border-radius: 15px;
-		box-shadow: 10px 5px 5px $mediumPurpleColor;
+		//box-shadow: 10px 5px 5px $mediumPurpleColor;
+	}
+	.btn-submit{
+		width: 150px;
+		height: 50px;
+		background-color: $mediumPurpleColor;
+		color: $lightPurpleColor;
+		border-radius: 15px;
+		&:hover{
+			background-color: $buttonHoverColor;
+		}
 	}
 }

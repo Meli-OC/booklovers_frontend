@@ -13,7 +13,7 @@ import axios from 'axios';
 
 
 const App = () => {
-	const [userToken, setUserToken] = useState();
+	const [userToken, setUserToken] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [userInfo, setUserInfo] = useState({});
@@ -68,6 +68,7 @@ const App = () => {
 				<Header
 					isLogged={isLogged}
 					setIsLogged={setIsLogged}
+					setUserToken={setUserToken}
 					username={userInfo.username}
 				/>
 				<Switch>
