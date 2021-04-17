@@ -39,7 +39,7 @@ const App = () => {
 	};
 
 	const getUserInfo = () => {
-		if (isLogged){
+		if (isLogged) {
 			axiosInstance.get(
 				"user",
 				{
@@ -49,13 +49,19 @@ const App = () => {
 					},
 				},
 			)
-				.then(resp =>setUserInfo(resp.data));
+				.then((resp) => {
+					const info = resp.data;
+					setUserInfo(info)
+				})
+				.catch(error => console.error(`Error: ${error}`));
 		}
+		return(
+			<Account userInfo={userInfo}/>
+		);
 	}
-
 	useEffect(() => {
 		getUserInfo();
-	})
+	}, []);
 
 	return (
 		<Router>
@@ -64,6 +70,7 @@ const App = () => {
 					isLogged={isLogged}
 					setIsLogged={setIsLogged}
 					setUserToken={setUserToken}
+					getUserInfo={getUserInfo}
 					username={userInfo.username}
 				/>
 				<Switch>
@@ -90,7 +97,7 @@ const App = () => {
 						/>
 					</Route>
 					<Route path="/account">
-						<Account username={userInfo.username} emailInfo={userInfo.email}/>
+						<Account userInfo={userInfo}/>
 					</Route>
 					<Route component={Home} />
 				</Switch>

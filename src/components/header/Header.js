@@ -5,9 +5,11 @@ import logo from "./bookLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ isLogged, setIsLogged, setUserToken, username}) => {
+const Header = ({ isLogged, setIsLogged, setUserToken, getUserInfo,  username}) => {
 	const history = useHistory();
 
+
+	// function for log out
 	const handleLogout = () => {
 		setUserToken("");
 		setIsLogged(false);
@@ -33,7 +35,7 @@ const Header = ({ isLogged, setIsLogged, setUserToken, username}) => {
 								</NavLink>
 							</li>
 							<li>
-								<NavLink className="myAccount" to="/account">
+								<NavLink className="myAccount" to="/account" onClick={getUserInfo}>
 									Mon Compte
 								</NavLink>
 							</li>

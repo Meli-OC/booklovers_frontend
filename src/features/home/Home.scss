@@ -22,7 +22,6 @@
 		background-color: $lighterPurpleColor;
 		border: 1px solid $lighterPurpleColor;
 		border-radius: 15px;
-		//box-shadow: 10px 5px 5px $mediumPurpleColor;
 	}
 	button{
 		@include button(0, 150px, 50px);
