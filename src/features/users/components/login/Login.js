@@ -21,12 +21,12 @@ const Login = ({
 		try {
 			event.preventDefault();
 			// axios request to log to our account
-			const resp = await axiosInstance.post("login", {
+			const resp = await axiosInstance.post("login/", {
 				email: email,
 				password: password,
 			});
-			if (resp.data.token) {
-				setUser(resp.data.token);
+			if (resp.data.access_token) {
+				setUser(resp.data.access_token);
 				// when logged we return to th homepage
 				setEmail("")
 				setPassword("")

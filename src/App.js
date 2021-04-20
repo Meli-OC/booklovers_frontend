@@ -41,11 +41,11 @@ const App = () => {
 	const getUserInfo = () => {
 		if (isLogged) {
 			axiosInstance.get(
-				"user",
+				"user/",
 				{
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Token ${userToken}`,
+						Authorization: `Bearer ${userToken}`,
 					},
 				},
 			)

@@ -19,7 +19,7 @@ const SignUp = ({
 	const handleCreateUser = async (event) => {
 		try {
 			event.preventDefault();
-			const resp = await axiosInstance.post("register", {
+			const resp = await axiosInstance.post("register/", {
 				email: email,
 				username: username,
 				password: password,
