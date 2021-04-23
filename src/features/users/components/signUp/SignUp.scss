@@ -4,10 +4,12 @@
 
 @import "../../../../utilities/_variables";
 
-.signUp-container{
-  height: 84vh;
-  @include form-design(".signUp-info", ".form-signUp", 20px, 20px, 250px, 50px);
-  .email, .username, .password{
-    @include labelMargin(15px, 0)
-  }
+.signUp-container {
+	height: 84vh;
+	@include form-design(".signUp-info", ".form-signUp", 20px, 20px, 250px, 50px);
+	.email,
+	.username,
+	.password {
+		@include labelMargin(15px, 0);
+	}
 }

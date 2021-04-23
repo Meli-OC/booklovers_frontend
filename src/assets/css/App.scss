@@ -16,8 +16,12 @@
 	}
 }
 
-.signUp-container, .signUp-info, .form-signUp, .login-container, .login-info, .formInfo{
-	@include container
+.signUp-container,
+.signUp-info,
+.login-container,
+.login-info,
+.formInfo {
+	@include container;
 }
 
 #root {

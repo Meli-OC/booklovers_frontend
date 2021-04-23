@@ -39,9 +39,10 @@
   color: #fffbfd;
   font-size: 1.5rem;
   margin-bottom: 10px;
+  margin-right: 20px;
 }
 .signUp-container .signUp-info .form-signUp input {
-  width: 500px;
+  width: 400px;
   height: 40px;
   padding-left: 20px;
   margin-bottom: 20px;
@@ -58,7 +59,9 @@
 .signUp-container .signUp-info .form-signUp button:hover {
   background-color: #ad1e74;
 }
-.signUp-container .email, .signUp-container .username, .signUp-container .password {
+.signUp-container .email,
+.signUp-container .username,
+.signUp-container .password {
   margin-top: 15px;
   margin-bottom: 0;
 }

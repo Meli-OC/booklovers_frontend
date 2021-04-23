@@ -33,7 +33,11 @@
   width: 100%;
 }
 
-.signUp-container, .signUp-info, .form-signUp, .login-container, .login-info, .formInfo {
+.signUp-container,
+.signUp-info,
+.login-container,
+.login-info,
+.formInfo {
   @apply flex flex-col justify-center items-center placeholder-gray-800;
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Cookie  from "js-cookie"
 import Login from "./features/users/components/login/Login";
 import SignUp from "./features/users/components/signUp/SignUp";
 import Header from "./components/header/Header";
@@ -9,7 +10,6 @@ import "./assets/css/App.scss";
 import Account from "./features/users/components/account/Account";
 import axiosInstance from "./conf/api.users";
 // import axios from 'axios';
-
 
 const App = () => {
 	const [userToken, setUserToken] = useState("");
@@ -31,34 +31,38 @@ const App = () => {
 	const setUser = (token) => {
 		if (token) {
 			setIsLogged(true);
-			setUserToken(token)
+			setUserToken(token);
 		} else {
-			setUserToken(null);
+			token = ""
+			setUserToken(token);
 			setIsLogged(false);
 		}
 	};
 
 	const getUserInfo = () => {
 		if (isLogged) {
-			axiosInstance.get(
-				"user/",
-				{
+			axiosInstance
+				.get("user/", {
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${userToken}`,
+						Authorization: `JWT ${userToken}`,
 					},
-				},
-			)
+				})
 				.then((resp) => {
 					const info = resp.data;
 					setUserInfo(info)
 				})
-				.catch(error => console.error(`Error: ${error}`));
+				.catch((error) => console.error(`Error: ${error}`));
 		}
-		return(
-			<Account userInfo={userInfo}/>
+
+		return (
+			<div>
+				<Header username = {userInfo.username}/>
+				<Account userInfo={userInfo} />
+			</div>
 		);
-	}
+	};
+
 	useEffect(() => {
 		getUserInfo();
 	}, []);
@@ -70,6 +74,7 @@ const App = () => {
 					isLogged={isLogged}
 					setIsLogged={setIsLogged}
 					setUserToken={setUserToken}
+					userToken={userToken}
 					getUserInfo={getUserInfo}
 					username={userInfo.username}
 				/>
@@ -97,7 +102,7 @@ const App = () => {
 						/>
 					</Route>
 					<Route path="/account">
-						<Account userInfo={userInfo}/>
+						<Account userInfo={userInfo} />
 					</Route>
 					<Route component={Home} />
 				</Switch>

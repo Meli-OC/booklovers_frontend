@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import Cookie from "js-cookie";
 import "./Header.scss";
 import logo from "./bookLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ isLogged, setIsLogged, setUserToken, getUserInfo,  username}) => {
+const Header = ({
+	isLogged,
+	setIsLogged,
+	setUserToken,
+	userToken,
+	getUserInfo,
+	username,
+}) => {
 	const history = useHistory();
-
 
 	// function for log out
 	const handleLogout = () => {
 		setUserToken("");
 		setIsLogged(false);
+		// Cookie.remove(userToken)
 		history.push("/");
 	};
 
@@ -35,7 +43,11 @@ const Header = ({ isLogged, setIsLogged, setUserToken, getUserInfo,  username}) 
 								</NavLink>
 							</li>
 							<li>
-								<NavLink className="myAccount" to="/account" onClick={getUserInfo}>
+								<NavLink
+									className="myAccount"
+									to="/account"
+									onClick={getUserInfo}
+								>
 									Mon Compte
 								</NavLink>
 							</li>
