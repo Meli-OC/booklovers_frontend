@@ -18,15 +18,15 @@ const App = () => {
 	const [userInfo, setUserInfo] = useState({});
 	const [isLogged, setIsLogged] = useState(false);
 
-	const handleEmailChange = (event) => {
-		const value = event.target.value;
-		setEmail(value);
-	};
-
-	const handlePasswordChange = (event) => {
-		const value = event.target.value;
-		setPassword(value);
-	};
+	// const handleEmailChange = (event) => {
+	// 	const value = event.target.value;
+	// 	setEmail(value);
+	// };
+	//
+	// const handlePasswordChange = (event) => {
+	// 	const value = event.target.value;
+	// 	setPassword(value);
+	// };
 
 
 	const getUserInfo = () => {
@@ -49,7 +49,7 @@ const App = () => {
 		if(isLogged){
 			getUserInfo();
 		}
-	}, []);
+	}, [isLogged]);
 
 	return (
 		<Router>
@@ -69,17 +69,14 @@ const App = () => {
 							<SignUp
 								email={email}
 								setEmail={setEmail}
-								handleEmailChange={handleEmailChange}
 								password={password}
 								setPassword={setPassword}
-								handlePasswordChange={handlePasswordChange}
 							/>
 						</Route>
 						<Route path="/account">
 							<Account userInfo={userInfo}/>
 						</Route>
 						<Route component={Home} />
-
 					</Switch>
 				</AppContext.Provider>
 				<Footer />

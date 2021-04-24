@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import Cookie from "js-cookie";
 import { useAppContext } from "../../../../libs/contextLib";
 import axiosInstance from "./../../../../conf/api.users";
+import FacebookSocialAuth from "../facebooklogin/FacebookLogin";
 import "./Login.scss";
 
 const Login = ({
 	setEmail,
 	setPassword,
-	setUser,
 }) => {
 	// function that allow the connection to the user account.
 	// he post his information and api return the user's token.
@@ -82,9 +82,11 @@ const Login = ({
 						<button type="submit" value="Submit">
 							Connexion
 						</button>
+						<NavLink to="/signup">Pas encore inscrit?</NavLink>
 					</div>
 				</div>
 			</form>
+			<FacebookSocialAuth/>
 		</div>
 	);
 };

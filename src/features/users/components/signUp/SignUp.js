@@ -1,18 +1,11 @@
 import axiosInstance from "./../../../../conf/api.users";
 import React, { useState } from "react";
+import Cookie from "js-cookie";
 import { useHistory } from "react-router-dom";
 
 import "./SignUp.scss";
 
-const SignUp = ({
-	email,
-	setEmail,
-	password,
-	setPassword,
-	setUser,
-	handleEmailChange,
-	handlePasswordChange,
-}) => {
+const SignUp = () => {
 	const [formData, setFormData] = useState({
 		email: '',
 		username: '',
@@ -24,31 +17,20 @@ const SignUp = ({
 	const {email, username, password1, password2, first_name, last_name} = formData;
 	const onChange = e => setFormData({...formData,[e.target.name]: e.target.value});
 	const history = useHistory();
-	// const [username, setUsername] = useState("");
-	// const [password2, setPassword2] = useState("");
-	// const [last_name, setLastName] = useState("");
-	// const [first_name, setFirstName] = useState("");
 
 	const handleCreateUser = async (event) => {
 		try {
 			event.preventDefault();
-			alert(first_name)
 			const resp = await axiosInstance.post("registration/", {
 				email: email,
 				username: username,
-				password1: password,
+				password1: password1,
 				password2: password2,
 				first_name: first_name,
 				last_name: last_name,
 			})
 			if (resp.data.access_token) {
-				setUser(resp.data.access_token);
-				setEmail("");
-				setUsername("");
-				setPassword("");
-				setPassword2("");
-				setFirstName("");
-				setLastName("");
+				Cookie.set(resp.data.access_token)
 				history.push("/");
 			}
 		} catch (e) {
@@ -56,15 +38,6 @@ const SignUp = ({
 		}
 	};
 
-	const handleFirstName = (event) => {
-		const value = event.target.value;
-		setFirstName(value);
-	};
-
-	const handleLastName = (event) => {
-		const value = event.target.value;
-		setLastName(value);
-	};
 
 	return (
 		<div className="signUp-container">
@@ -87,7 +60,7 @@ const SignUp = ({
 								name="email"
 								placeholder="Email"
 								value={email}
-								onChange={handleEmailChange}
+								onChange={e => onChange(e)}
 							/>
 						</div>
 						<div className="username">
@@ -100,37 +73,33 @@ const SignUp = ({
 								name="username"
 								placeholder="Username"
 								value={username}
-								onChange={(event) => {
-									setUsername(event.target.value);
-								}}
+								onChange={e => onChange(e)}
 							/>
 						</div>
 						<div className="password">
-							<label htmlFor="password" className="password">
+							<label htmlFor="password1" className="password">
 								Mot de passe:
 							</label>
 							<input
 								className="password-input"
 								type="password"
-								name="password"
+								name="password1"
 								placeholder="Password"
-								value={password}
-								onChange={handlePasswordChange}
+								value={password1}
+								onChange={e => onChange(e)}
 							/>
 						</div>
 						<div className="password">
-							<label htmlFor="password" className="password">
+							<label htmlFor="password2" className="password">
 								Confirmation mot de passe:
 							</label>
 							<input
 								className="password-input"
 								type="password"
-								name="password"
+								name="password2"
 								placeholder="Confirmation mot de passe"
 								value={password2}
-								onChange={(event) => {
-									setPassword2(event.target.value);
-								}}
+								onChange={e => onChange(e)}
 							/>
 						</div>
 						<div className="firstname">
@@ -143,7 +112,7 @@ const SignUp = ({
 								name="first_name"
 								placeholder="Prénom"
 								value={first_name}
-								onChange={handleFirstName}
+								onChange={e => onChange(e)}
 							/>
 						</div>
 						<div className="lastName">
@@ -156,7 +125,7 @@ const SignUp = ({
 								name="last_name"
 								placeholder="Nom"
 								value={last_name}
-								onChange={handleLastName}
+								onChange={e => onChange(e)}
 							/>
 						</div>
 						<button type="submit" value="Submit">
