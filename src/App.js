@@ -9,10 +9,10 @@ import Footer from "./components/footer/Footer";
 import "./assets/css/App.scss";
 import Account from "./features/users/components/account/Account";
 import axiosInstance from "./conf/api.users";
-// import axios from 'axios';
+import { AppContext } from "./libs/contextLib"
+
 
 const App = () => {
-	const [userToken, setUserToken] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [userInfo, setUserInfo] = useState({});
@@ -28,84 +28,60 @@ const App = () => {
 		setPassword(value);
 	};
 
-	const setUser = (token) => {
-		if (token) {
-			setIsLogged(true);
-			setUserToken(token);
-		} else {
-			token = ""
-			setUserToken(token);
-			setIsLogged(false);
-		}
-	};
 
 	const getUserInfo = () => {
-		if (isLogged) {
-			axiosInstance
-				.get("user/", {
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `JWT ${userToken}`,
-					},
-				})
-				.then((resp) => {
-					const info = resp.data;
-					setUserInfo(info)
-				})
-				.catch((error) => console.error(`Error: ${error}`));
-		}
-
-		return (
-			<div>
-				<Header username = {userInfo.username}/>
-				<Account userInfo={userInfo} />
-			</div>
-		);
+		const token = Cookie.get("token");
+		axiosInstance
+			.get("user/", {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				},
+			})
+			.then((resp) => {
+				const info = resp.data;
+				setUserInfo(info)
+			})
+			.catch((error) => console.error(`Error: ${error}`));
 	};
 
 	useEffect(() => {
-		getUserInfo();
+		if(isLogged){
+			getUserInfo();
+		}
 	}, []);
 
 	return (
 		<Router>
 			<div className="App">
-				<Header
-					isLogged={isLogged}
-					setIsLogged={setIsLogged}
-					setUserToken={setUserToken}
-					userToken={userToken}
-					getUserInfo={getUserInfo}
-					username={userInfo.username}
-				/>
-				<Switch>
-					<Route path="/login">
-						<Login
-							email={email}
-							setEmail={setEmail}
-							handleEmailChange={handleEmailChange}
-							password={password}
-							setPassword={setPassword}
-							handlePasswordChange={handlePasswordChange}
-							setUser={setUser}
-						/>
-					</Route>
-					<Route path="/signup">
-						<SignUp
-							email={email}
-							setEmail={setEmail}
-							handleEmailChange={handleEmailChange}
-							password={password}
-							setPassword={setPassword}
-							handlePasswordChange={handlePasswordChange}
-							setUser={setUser}
-						/>
-					</Route>
-					<Route path="/account">
-						<Account userInfo={userInfo} />
-					</Route>
-					<Route component={Home} />
-				</Switch>
+				<AppContext.Provider value={{ isLogged, setIsLogged }}>
+					<Header userInfo={userInfo} getUserInfo={getUserInfo}/>
+					<Switch>
+						<Route path="/login">
+							<Login
+								email={email}
+								setEmail={setEmail}
+								password={password}
+								setPassword={setPassword}
+							/>
+						</Route>
+						<Route path="/signup">
+							<SignUp
+								email={email}
+								setEmail={setEmail}
+								handleEmailChange={handleEmailChange}
+								password={password}
+								setPassword={setPassword}
+								handlePasswordChange={handlePasswordChange}
+							/>
+						</Route>
+						<Route path="/account">
+							<Account userInfo={userInfo}/>
+						</Route>
+						<Route component={Home} />
+
+					</Switch>
+				</AppContext.Provider>
 				<Footer />
 			</div>
 		</Router>

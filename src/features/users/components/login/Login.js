@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Cookie from "js-cookie";
+import { useAppContext } from "../../../../libs/contextLib";
 import axiosInstance from "./../../../../conf/api.users";
 import "./Login.scss";
 
 const Login = ({
-	email,
 	setEmail,
-	password,
 	setPassword,
 	setUser,
-	handleEmailChange,
-	handlePasswordChange,
 }) => {
 	// function that allow the connection to the user account.
 	// he post his information and api return the user's token.
-
+	const [formData, setFormData] = useState({
+		email: '',
+		password: ''
+	});
+	const { setIsLogged } = useAppContext()
+	const {email, password} = formData;
+	const onChange = e => setFormData({...formData,[e.target.name]: e.target.value});
 	const history = useHistory();
 	
 	const handleSubmit = async (event) => {
@@ -25,8 +29,11 @@ const Login = ({
 				email: email,
 				password: password,
 			});
-			if (resp.data.access_token) {
-				setUser(resp.data.access_token);
+			const token = resp.data.access_token
+			if (token) {
+				setIsLogged(true)
+				Cookie.set("token", token)
+
 				// when logged we return to th homepage
 				setEmail("")
 				setPassword("")
@@ -45,7 +52,7 @@ const Login = ({
 				action="POST"
 				name="login-form"
 				className="login-form"
-				onSubmit={handleSubmit}
+				onSubmit={e => handleSubmit(e)}
 			>
 				<div className="login-info">
 					<h3>Connectez-vous à votre compte</h3>
@@ -59,7 +66,7 @@ const Login = ({
 							name="email"
 							placeholder="Email"
 							value={email}
-							onChange={handleEmailChange}
+							onChange={e => onChange(e)}
 						/>
 						<label htmlFor="password" className="password">
 							Mot de passe
@@ -70,7 +77,7 @@ const Login = ({
 							name="password"
 							placeholder="Password"
 							value={password}
-							onChange={handlePasswordChange}
+							onChange={e => onChange(e)}
 						/>
 						<button type="submit" value="Submit">
 							Connexion

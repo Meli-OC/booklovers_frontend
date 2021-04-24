@@ -13,11 +13,21 @@ const SignUp = ({
 	handleEmailChange,
 	handlePasswordChange,
 }) => {
+	const [formData, setFormData] = useState({
+		email: '',
+		username: '',
+		password1: '',
+		password2:'',
+		first_name:'',
+		last_name:'',
+	});
+	const {email, username, password1, password2, first_name, last_name} = formData;
+	const onChange = e => setFormData({...formData,[e.target.name]: e.target.value});
 	const history = useHistory();
-	const [username, setUsername] = useState("");
-	const [password2, setPassword2] = useState("");
-	const [last_name, setLastName] = useState("");
-	const [first_name, setFirstName] = useState("");
+	// const [username, setUsername] = useState("");
+	// const [password2, setPassword2] = useState("");
+	// const [last_name, setLastName] = useState("");
+	// const [first_name, setFirstName] = useState("");
 
 	const handleCreateUser = async (event) => {
 		try {

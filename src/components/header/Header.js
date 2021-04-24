@@ -1,27 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Cookie from "js-cookie";
+import {useAppContext} from "../../libs/contextLib";
 import "./Header.scss";
 import logo from "./bookLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({
-	isLogged,
-	setIsLogged,
-	setUserToken,
-	userToken,
 	getUserInfo,
-	username,
+	userInfo,
 }) => {
 	const history = useHistory();
+	const { isLogged, setIsLogged } = useAppContext()
+	const info = {userInfo}
 
+	let username = info.userInfo.username
 	// function for log out
 	const handleLogout = () => {
-		setUserToken("");
 		setIsLogged(false);
-		// Cookie.remove(userToken)
-		history.push("/");
+		history.push("/login");
+		Cookie.remove("token")
 	};
 
 	return (
@@ -34,7 +33,7 @@ const Header = ({
 					<h1>Booklovers</h1>
 				</div>
 				{isLogged ? (
-					<div className="links">
+					<div className="links" key={info.userInfo._id}>
 						<h2>Bonjour, {username}</h2>
 						<ul>
 							<li>
