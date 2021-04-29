@@ -24,7 +24,8 @@ class GoolgeSocialAuth extends Component {
         return (
             <div className="fb-btn">
                 <GoogleLogin
-                    clientId="132784214551-u9n96s8rtmih4jaslfqjaqf5ndoocs40.apps.googleusercontent.com"
+                    // clientId="132784214551-u9n96s8rtmih4jaslfqjaqf5ndoocs40.apps.googleusercontent.com"
+                    clientId="132784214551-ic7vkf426srk4s0tm41jcqrhep8sh6v8.apps.googleusercontent.com"
                     buttonText="LOGIN WITH GOOGLE"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
