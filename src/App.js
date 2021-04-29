@@ -18,17 +18,6 @@ const App = () => {
 	const [userInfo, setUserInfo] = useState({});
 	const [isLogged, setIsLogged] = useState(false);
 
-	// const handleEmailChange = (event) => {
-	// 	const value = event.target.value;
-	// 	setEmail(value);
-	// };
-	//
-	// const handlePasswordChange = (event) => {
-	// 	const value = event.target.value;
-	// 	setPassword(value);
-	// };
-
-
 	const getUserInfo = () => {
 		const token = Cookie.get("token");
 		axiosInstance
