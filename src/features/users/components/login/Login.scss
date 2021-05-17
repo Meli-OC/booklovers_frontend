@@ -7,7 +7,7 @@
 
 .login-container{
   height: 84%;
-  @include form-design(".login-info", ".formInfo", 50px, 50px, 250px, 50px);
+  @include form-design(".login-info",  ".formInfo", 50px, 50px, 250px, 50px);
   .password{
     @include labelMargin(40px, 0)
   }

@@ -3,7 +3,6 @@ import { NavLink, useHistory } from "react-router-dom";
 import Cookie from "js-cookie";
 import { useAppContext } from "../../../../libs/contextLib";
 import axiosInstance from "./../../../../conf/api.users";
-import GoogleSocialAuth from "../googleLogin/GoogleLogin";
 import "./Login.scss";
 
 const Login = ({
@@ -86,7 +85,6 @@ const Login = ({
 					</div>
 				</div>
 			</form>
-			<GoogleSocialAuth/>
 		</div>
 	);
 };

@@ -14,7 +14,7 @@ const Header = ({
 	const history = useHistory();
 	const { isLogged, setIsLogged } = useAppContext()
 	const info = {userInfo}
-
+	console.log(userInfo)
 	let username = info.userInfo.username
 	// function for log out
 	const handleLogout = () => {

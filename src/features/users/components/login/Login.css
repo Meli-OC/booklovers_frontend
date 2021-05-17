@@ -25,8 +25,8 @@
   height: 84%;
 }
 .login-container .login-info {
-  height: 600px;
-  width: 900px;
+  height: 700px;
+  width: 1100px;
   background-color: #623751;
   border-radius: 15px;
 }
@@ -38,14 +38,13 @@
 .login-container .login-info .formInfo label {
   color: #fffbfd;
   font-size: 1.5rem;
-  margin-bottom: 10px;
-  margin-right: 20px;
+  margin-bottom: 20px;
 }
 .login-container .login-info .formInfo input {
-  width: 400px;
+  width: 450px;
   height: 40px;
   padding-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border-radius: 15px;
 }
 .login-container .login-info .formInfo button {

@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.footer {
+  @apply flex justify-center fixed bottom-0 w-full;
+}
+
+/*# sourceMappingURL=Footer.css.map */
