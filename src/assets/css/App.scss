@@ -4,7 +4,8 @@
 @import "../../utilities/variables";
 
 .App {
-	@apply flex flex-col h-screen;
+	@apply flex flex-col;
+	height: 100%;
 	@media (min-width: 1536px) {
 		.container {
 			max-width: 100vw;
@@ -25,7 +26,7 @@
 }
 
 #root {
-	@apply h-screen;
+	height: 200vh;
 	background-color: $lightPurpleColor;
 	font-family: $fontFamily;
 	color: $fontColor;

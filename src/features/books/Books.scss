@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../../utilities/variables";
+
+
+.booksContainer, .bookDiv{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.booksContainer{
+  background-color: $lighterPurpleColor;
+  margin: 150px auto;
+  height: 700px;
+  width: 90%;
+
+  .bookDiv{
+    flex-direction: column;
+    width: 450px;
+    height: 100%;
+
+    img {
+      height: 350px;
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+  }
+  .bookInfo {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: $lightPurpleColor;
+    margin-bottom: 60px;
+    .title{
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+    .author{
+      font-size: 1.1rem;
+    }
+  }
+}
+

@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"Books.css"}
+{"version":3,"sourceRoot":"","sources":["Books.scss","../../utilities/_variables.scss"],"names":[],"mappings":"AAAA;AACA;AACA;AC8BC;EACC,YAnBU;;;AAkBX;EACC,YAnBU;;;AAkBX;EACC,YAnBU;;;AAkBX;EACC,YAnBU;;;AAkBX;EACC,YAnBU;;;ADPZ;EACE;EACA;EACA;;;AAGF;EACE,kBCNmB;EDOnB;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGJ;EACE;EACA;EACA;EACA;EACA,OC5Be;ED6Bf;;AACA;EACE;EACA;;AAEF;EACE","file":"Books.css"}

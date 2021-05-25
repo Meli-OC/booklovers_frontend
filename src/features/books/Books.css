@@ -1,3 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-gradient-chill {
+  background: linear-gradient(135deg, #09e485 0%, #0291e3 100%);
+}
 
+.bg-gradient-warm {
+  background: linear-gradient(135deg, #f2cd48 0%, #fd803f 100%);
+}
+
+.bg-gradient-hot {
+  background: linear-gradient(135deg, #f9445a 0%, #fd803f 100%);
+}
+
+.bg-gradient-cold {
+  background: linear-gradient(135deg, #8019c6 0%, #2f93cc 100%);
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #22151e 0%, #39122a 30%, #623751 100%);
+}
+
+.booksContainer, .bookDiv {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.booksContainer {
+  background-color: #623751;
+  margin: 150px auto;
+  height: 700px;
+  width: 90%;
+}
+.booksContainer .bookDiv {
+  flex-direction: column;
+  width: 450px;
+  height: 100%;
+}
+.booksContainer .bookDiv img {
+  height: 350px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+.booksContainer .bookInfo {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: #fffbfd;
+  margin-bottom: 60px;
+}
+.booksContainer .bookInfo .title {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.booksContainer .bookInfo .author {
+  font-size: 1.1rem;
+}
 
 /*# sourceMappingURL=Books.css.map */

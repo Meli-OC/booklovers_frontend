@@ -22,7 +22,8 @@
 }
 
 .App {
-  @apply flex flex-col h-screen;
+  @apply flex flex-col;
+  height: 100%;
 }
 @media (min-width: 1536px) {
   .App .container {
@@ -42,7 +43,7 @@
 }
 
 #root {
-  @apply h-screen;
+  height: 200vh;
   background-color: #fffbfd;
   font-family: "Raleway", sans-serif;
   color: #535353;

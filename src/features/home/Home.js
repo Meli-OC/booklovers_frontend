@@ -1,5 +1,7 @@
 import React from "react";
 import "./Home.scss";
+import Books from "../books/Books";
+
 
 const Home = () => {
 	return (
@@ -22,6 +24,7 @@ const Home = () => {
 					</button>
 				</form>
 			</div>
+			<Books />
 		</div>
 	);
 };
